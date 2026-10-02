@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Browse the catalog, add to cart and check out online.">
+<title>My Store</title>
+<link rel="icon" href="/favicon.ico">
+<script src="/store-config.js"></script>
+<script src="/js/branding.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="top"></div>
+
+<!-- ============ HEADER ============ -->
+<header class="main-header">
+  <div class="container-fluid header-row">
+    <a href="#top" class="logo">
+      <img class="logo-mark" src="/images/logo.svg" alt="Store logo" data-store-logo>
+      <div>
+        <div class="logo-text" data-store="brand">My Store</div>
+        <span class="logo-tag" data-store="tagline">Online Store</span>
+      </div>
+    </a>
+
+    <div class="search-wrap">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search products, categories, brands...">
+      <button class="search-btn" id="searchBtn" aria-label="Search">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <select class="search-select" id="searchCategorySelect" hidden>
+        <option value="all">All categories</option>
+      </select>
+    </div>
+
+    <div class="header-actions">
+      <a class="header-action" href="account.html">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+        <span id="accountLabel">Account</span>
+      </a>
+      <a class="header-action" href="seller/login.html">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/><path d="M5 9v10h14V9"/></svg>
+        <span>Sell</span>
+      </a>
+      <button class="header-action" id="helpToggleBtn" type="button" aria-haspopup="true" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.9-2 3.5"/><circle cx="12" cy="16.5" r=".4" fill="currentColor"/></svg>
+        <span>Help</span>
+      </button>
+      <button class="cart-btn" id="cartOpenBtn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+        <span class="cart-label">Cart</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Slim category quick-links row -->
+  <nav class="subnav">
+    <div class="container-fluid" style="display:flex;align-items:center;gap:4px;height:44px;overflow-x:auto;">
+      <button class="all-menu-btn" id="allMenuBtn">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        All
+      </button>
+      <div class="subnav-sep"></div>
+      <div id="catStrip" style="display:flex;gap:4px;"></div>
+    </div>
+  </nav>
+</header>
+
+<div class="help-panel" id="helpPanel" hidden>
+  <div class="help-panel-head">
+    <strong>How can we help?</strong>
+    <button class="help-close" id="helpCloseBtn" type="button" aria-label="Close help">&times;</button>
+  </div>
+  <div class="help-faqs">
+    <details>
+      <summary>How do I place an order?</summary>
+      <p>Add items to your cart and check out online.</p>
+    </details>
+    <details>
+      <summary>How do I pay?</summary>
+      <p data-store="paymentNote">Place your order online and we will contact you to arrange payment.</p>
+    </details>
+    <details>
+      <summary>What&rsquo;s your returns policy?</summary>
+      <p data-store="returnsNote">Contact us within 30 days if something is not right.</p>
+    </details>
+    <details>
+      <summary>How is delivery handled?</summary>
+      <p data-store="shippingNote">Delivery options and costs are confirmed at checkout.</p>
+    </details>
+  </div>
+  <a class="help-whatsapp-btn" href="#" data-store-link="whatsapp" data-store-message="Hello, I need some help" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.85 11.85 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.88c0 2.1.55 4.15 1.6 5.96L.1 24l6.3-1.65a11.86 11.86 0 0 0 5.68 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.47-8.42ZM12.09 21.8h-.01a9.86 9.86 0 0 1-5.02-1.37l-.36-.21-3.74.98 1-3.64-.23-.37a9.86 9.86 0 1 1 8.36 4.61Zm5.41-7.39c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
+    Chat with us on WhatsApp
+  </a>
+</div>
+
+<!-- ============ SHOP ============ -->
+<section class="shop-wrap" id="shop">
+  <div class="container">
+    <div style="padding-top:44px;">
+      <button class="mobile-filter-btn" id="mobileFilterBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="9" cy="6" r="1.8" fill="currentColor"/><circle cx="15" cy="12" r="1.8" fill="currentColor"/><circle cx="9" cy="18" r="1.8" fill="currentColor"/></svg>
+        Filters
+      </button>
+    </div>
+    <div class="shop-grid">
+      <aside class="filters" id="filtersPanel">
+        <h3>Filters <button class="clear-btn" id="clearFiltersBtn">Clear all</button></h3>
+
+        <div class="filter-block">
+          <h4>Category</h4>
+          <div id="filterCategory"></div>
+        </div>
+
+        <div class="filter-block">
+          <h4>Brand</h4>
+          <div id="filterBrand"></div>
+        </div>
+
+        <div class="filter-block">
+          <h4>Price (<span data-store="currencyCode">USD</span>)</h4>
+          <div class="price-inputs">
+            <input type="number" id="priceMin" placeholder="Min" min="0">
+            <span style="color:var(--text-faint);">&ndash;</span>
+            <input type="number" id="priceMax" placeholder="Max" min="0">
+          </div>
+        </div>
+
+        <div class="filter-block">
+          <h4>Customer rating</h4>
+          <div id="filterRating"></div>
+        </div>
+      </aside>
+
+      <div class="results-area">
+        <div class="active-chips" id="activeChips"></div>
+        <div class="results-bar">
+          <div class="results-count"><strong id="resultsNum">0</strong> results</div>
+          <div class="sort-wrap">
+            Sort by
+            <select id="sortSelect">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Avg. Rating</option>
+              <option value="newest">Newest Arrivals</option>
+            </select>
+          </div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENTLY VIEWED (guests included — localStorage only) ============ -->
+<section class="carousel-section" id="recentStrip" hidden>
+  <div class="container">
+    <div class="carousel-head"><h3>Recently viewed</h3></div>
+    <div class="carousel-row">
+      <div class="carousel-track" id="recentTrack"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<section class="trust-strip">
+  <div class="container trust-grid">
+    <div class="trust-item">
+      <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div>
+      <div><h4>Buyer protection</h4><p>Orders confirmed with you before delivery</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <div><h4>Bulk &amp; retail pricing</h4><p>Ask us about pricing for larger orders</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
+      <div><h4>Easy returns</h4><p data-store="returnsNote">Contact us within 30 days if something is not right.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      <div><h4>Order tracking</h4><p>Every order is confirmed before dispatch</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo" data-store="brand">My Store</div>
+      <p data-store="description">Browse the catalog, add to cart and check out online.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email">
+        <button>Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <a href="#shop">All products</a>
+      <a href="account.html">My account</a>
+      <a href="checkout.html">Cart</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="seller/login.html">Sell with us</a>
+      <a href="#" data-store-link="email" data-store-optional>Email us</a>
+    </div>
+    <div class="footer-col">
+      <h5>Support</h5>
+      <a href="#" id="footerHelpLink">Help Center</a>
+      <a href="#" data-store-link="phone" data-store-optional>Call us</a>
+      <a href="#" data-store-link="whatsapp">WhatsApp</a>
+    </div>
+  </div>
+  <div class="container footer-location">
+    <div>
+      <h5>Get in touch</h5>
+      <p class="footer-address" data-store="address" data-store-optional></p>
+      <a class="footer-whatsapp-link" href="#" data-store-link="whatsapp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.85 11.85 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.88c0 2.1.55 4.15 1.6 5.96L.1 24l6.3-1.65a11.86 11.86 0 0 0 5.68 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.47-8.42ZM12.09 21.8h-.01a9.86 9.86 0 0 1-5.02-1.37l-.36-.21-3.74.98 1-3.64-.23-.37a9.86 9.86 0 1 1 8.36 4.61Zm5.41-7.39c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
+        Chat with us on WhatsApp
+      </a>
+    </div>
+    <div class="footer-map" data-store-map></div>
+  </div>
+  <div class="container footer-bottom">
+    <span>&copy; <span data-store="year">2026</span> <span data-store="name">My Store</span>. All rights reserved.</span>
+    <div class="footer-socials">
+      <a href="#" aria-label="Instagram" data-store-link="instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+      <a href="#" aria-label="X" data-store-link="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg></a>
+      <a href="#" aria-label="YouTube" data-store-link="youtube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l6 3-6 3z" fill="currentColor" stroke="none"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-socials" id="floatingSocials" aria-label="Social media links" data-store-social-rail>
+  <a class="social-whatsapp" href="#" data-store-link="whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.85 11.85 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.88c0 2.1.55 4.15 1.6 5.96L.1 24l6.3-1.65a11.86 11.86 0 0 0 5.68 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.47-8.42ZM12.09 21.8h-.01a9.86 9.86 0 0 1-5.02-1.37l-.36-.21-3.74.98 1-3.64-.23-.37a9.86 9.86 0 1 1 8.36 4.61Zm5.41-7.39c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
+  </a>
+  <a class="social-instagram" href="#" data-store-link="instagram" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" class="social-dot"/></svg>
+  </a>
+  <a class="social-facebook" href="#" data-store-link="facebook" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v3H6v4h3v8h4v-8h3.5l.5-4H13V9c0-.67.33-1 1-1Z"/></svg>
+  </a>
+  <a class="social-tiktok" href="#" data-store-link="tiktok" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h3.1c.3 1.7 1.3 3 2.9 3.8v3.1a8.8 8.8 0 0 1-2.9-1V15a6 6 0 1 1-6-6h.8v3.2a2.8 2.8 0 1 0 2.1 2.7V3Z"/></svg>
+  </a>
+</div>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="overlay" id="overlay"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>Your Cart</h3>
+    <button class="cart-close" id="cartCloseBtn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot" id="cartFoot">
+    <div class="cart-total-row"><span>Subtotal</span><strong id="cartSubtotal">&mdash;</strong></div>
+    <button class="checkout-btn">Proceed to Checkout</button>
+    <div class="cart-note">Shipping &amp; taxes calculated at checkout</div>
+  </div>
+</div>
+
+
+  <script src="js/catalog-shared.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

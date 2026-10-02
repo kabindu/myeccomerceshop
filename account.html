@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="store-page-title" content="My Account">
+<title>My Account</title>
+<link rel="icon" href="/favicon.ico">
+<script src="/store-config.js"></script>
+<script src="/js/branding.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="main-header">
+  <div class="container-fluid header-row">
+    <a href="index.html" class="logo">
+      <img class="logo-mark" src="/images/logo.svg" alt="Store logo" data-store-logo>
+      <div>
+        <div class="logo-text" data-store="brand">My Store</div>
+        <span class="logo-tag" data-store="tagline">Online Store</span>
+      </div>
+    </a>
+    <a class="pd-back" href="index.html">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span class="pd-back-label">Back to shop</span>
+    </a>
+  </div>
+</header>
+
+<section class="pd-wrap">
+  <div class="container acct-container">
+
+    <!-- Signed-out: login / register -->
+    <div id="acctAuth" class="acct-auth" hidden>
+      <div class="acct-tabs">
+        <button class="acct-tab active" data-tab="login">Sign in</button>
+        <button class="acct-tab" data-tab="register">Create account</button>
+      </div>
+
+      <form id="loginForm" class="acct-form">
+        <label class="field"><span>Email</span><input type="email" name="email" required autocomplete="email"></label>
+        <label class="field"><span>Password</span><input type="password" name="password" required autocomplete="current-password"></label>
+        <p class="acct-error" id="loginError"></p>
+        <button class="add-btn acct-submit" type="submit">Sign in</button>
+      </form>
+
+      <form id="registerForm" class="acct-form" hidden>
+        <label class="field"><span>Full name</span><input type="text" name="name" required minlength="2" autocomplete="name"></label>
+        <label class="field"><span>Email</span><input type="email" name="email" required autocomplete="email"></label>
+        <label class="field"><span>Phone number</span><input type="tel" name="phone" required inputmode="tel" autocomplete="tel" pattern="[0-9+()\s-]{7,20}" title="Enter a phone number we can reach you on, including the country code" placeholder="Phone number"></label>
+        <label class="field"><span>Password</span><input type="password" name="password" id="registerPassword" required minlength="6" autocomplete="new-password"></label>
+        <div class="pw-strength" id="registerPwStrength" hidden><div class="pw-strength-bars"><span></span><span></span><span></span><span></span></div><span class="pw-strength-label"></span></div>
+        <label class="field"><span>Confirm password</span><input type="password" name="confirmPassword" id="registerConfirmPassword" required autocomplete="new-password"></label>
+        <p class="acct-error" id="registerError"></p>
+        <button class="add-btn acct-submit" type="submit">Create account</button>
+      </form>
+    </div>
+
+    <!-- Signed-in: account overview + orders -->
+    <div id="acctOverview" class="acct-overview" hidden>
+      <div class="acct-header">
+        <div>
+          <p class="eyebrow">My account</p>
+          <h1 id="acctName"></h1>
+          <p class="acct-meta" id="acctMeta"></p>
+        </div>
+        <button class="quote-btn" id="logoutBtn">Sign out</button>
+      </div>
+
+      <h2 class="acct-orders-heading">Order history</h2>
+      <div id="acctOrders" class="acct-orders"></div>
+    </div>
+
+  </div>
+</section>
+
+  <script src="js/catalog-shared.js"></script>
+  <script src="js/password-strength.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

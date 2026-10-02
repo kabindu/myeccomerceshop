@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="store-page-title" content="Product">
+<title>Product</title>
+<link rel="icon" href="/favicon.ico">
+<script src="/store-config.js"></script>
+<script src="/js/branding.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER (compact — logo, back link, cart) ============ -->
+<header class="main-header">
+  <div class="container-fluid header-row">
+    <a href="index.html" class="logo">
+      <img class="logo-mark" src="/images/logo.svg" alt="Store logo" data-store-logo>
+      <div>
+        <div class="logo-text" data-store="brand">My Store</div>
+        <span class="logo-tag" data-store="tagline">Online Store</span>
+      </div>
+    </a>
+
+    <a class="pd-back" href="index.html">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span class="pd-back-label">Back to shop</span>
+    </a>
+
+    <div class="header-actions">
+      <a class="cart-btn" href="index.html">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+        <span class="cart-label">Cart</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PRODUCT DETAIL ============ -->
+<section class="pd-wrap" id="pdWrap" hidden>
+  <div class="container">
+    <div class="pd-crumb" id="pdCrumb"></div>
+    <div class="pd-grid">
+      <div class="pd-gallery">
+        <div class="pd-main-media" id="pdMainMedia">
+          <button class="pd-nav-arrow left" id="pdPrev" aria-label="Previous image">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="pd-nav-arrow right" id="pdNext" aria-label="Next image">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="pd-thumbs" id="pdThumbs"></div>
+      </div>
+
+      <div class="pd-info">
+        <div class="pd-brand" id="pdBrand"></div>
+        <h1 class="pd-title" id="pdTitle"></h1>
+        <div class="pd-rating" id="pdRating"></div>
+        <div class="pd-rate-widget" id="pdRateWidget">
+          <span>Rate this product:</span>
+          <div class="pd-rate-stars" id="pdRateStars"></div>
+          <span class="pd-rate-note" id="pdRateNote" hidden></span>
+        </div>
+        <div class="pd-price-row" id="pdPriceRow"></div>
+        <div class="pd-spec mono" id="pdSpec"></div>
+        <div class="pd-stock" id="pdStock"></div>
+
+        <div class="pd-qty-row">
+          <span>Quantity</span>
+          <div class="qty-row">
+            <button class="qty-btn" id="pdQtyDec">&minus;</button>
+            <span class="qty-num" id="pdQtyNum">1</span>
+            <button class="qty-btn" id="pdQtyInc">+</button>
+          </div>
+        </div>
+
+        <div class="pd-actions">
+          <button class="add-btn pd-add-btn" id="pdAddBtn">Add to Cart</button>
+          <a class="quote-btn pd-quote-btn whatsapp-btn" id="pdQuoteBtn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.85 11.85 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.88c0 2.1.55 4.15 1.6 5.96L.1 24l6.3-1.65a11.86 11.86 0 0 0 5.68 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.47-8.42ZM12.09 21.8h-.01a9.86 9.86 0 0 1-5.02-1.37l-.36-.21-3.74.98 1-3.64-.23-.37a9.86 9.86 0 1 1 8.36 4.61Zm5.41-7.39c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
+            Order via WhatsApp
+          </a>
+        </div>
+        <div class="pd-added-note" id="pdAddedNote" hidden>Added to cart &#10003;</div>
+
+        <div class="pd-trust">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg> Trade assurance</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> 30-day returns</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secured checkout</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pd-description-block">
+      <h2>Product description</h2>
+      <div class="pd-description-body" id="pdDescription"></div>
+    </div>
+  </div>
+</section>
+
+<section class="pd-wrap" id="pdNotFound" hidden>
+  <div class="container pd-empty">
+    <h2>We couldn&rsquo;t find that product</h2>
+    <p>It may have sold out or been removed from the catalog.</p>
+    <a class="btn btn-primary" href="index.html">&larr; Back to shop</a>
+  </div>
+</section>
+
+<div class="pd-mobile-bar" id="pdMobileBar" hidden>
+  <div class="pd-mobile-price" id="pdMobilePrice"></div>
+  <button class="add-btn" id="pdMobileAddBtn">Add to Cart</button>
+</div>
+
+  <script src="js/catalog-shared.js"></script>
+  <script src="js/product.js"></script>
+</body>
+</html>

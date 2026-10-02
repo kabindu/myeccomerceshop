@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="store-page-title" content="Seller Dashboard">
+  <title>Seller Dashboard</title>
+  <link rel="icon" href="/favicon.ico">
+  <script src="/store-config.js"></script>
+  <script src="/js/branding.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/dashboard/admin.css">
+  <link rel="stylesheet" href="../css/dashboard/theme-overrides.css">
+  <link rel="stylesheet" href="../css/dashboard/reference-overrides.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-lockup">
+        <img class="brand-mark" src="/images/logo.svg" alt="Store logo" data-store-logo>
+        <div><strong id="sellerBusinessName">My Shop</strong><span>Seller dashboard</span></div>
+      </div>
+      <nav class="main-nav" aria-label="Seller navigation">
+        <button class="nav-item active"><span class="nav-icon">◫</span>My Products</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="nav-item muted" id="sellerLogoutBtn"><span class="nav-icon">⎋</span>Sign out</button>
+        <a class="back-store" href="/">&larr; View storefront</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="admin-topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">&#9776;</button>
+        <div class="breadcrumb"><span>Seller</span><b>/</b><strong>My Products</strong></div>
+        <div class="top-actions">
+          <div class="admin-user"><div class="avatar" id="sellerAvatar">S</div><div><strong id="sellerContactName">Seller</strong><small id="sellerEmail"></small></div></div>
+        </div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="view active">
+          <div class="verify-banner" id="verifyBanner" hidden>
+            <p><strong>Verify your email address</strong>We will send a 6-digit code to your inbox. Verifying is separate from approval, but it confirms we can reach you.</p>
+            <div class="verify-actions">
+              <button type="button" class="ghost" id="verifySendBtn">Send code</button>
+              <input type="text" id="verifyCodeInput" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000" aria-label="6-digit verification code">
+              <button type="button" id="verifySubmitBtn">Verify</button>
+            </div>
+            <p class="verify-status" id="verifyStatus"></p>
+          </div>
+          <div class="page-heading"><div><p class="eyebrow">Your listings</p><h1>My Products</h1><p class="subheading">Products you post here appear on the storefront alongside everything else.</p></div><button class="primary-button" data-open-product>&#65291; Add product</button></div>
+          <section class="panel product-panel">
+            <div class="toolbar"><div class="search-box"><span>&#8981;</span><input id="productSearch" type="search" placeholder="Search your products..."></div></div>
+            <div class="table-meta"><span><strong id="productCount">0</strong> products</span></div>
+            <div class="table-wrap"><table><thead><tr><th>PRODUCT</th><th>CATEGORY</th><th>PRICE</th><th>STOCK</th><th></th></tr></thead><tbody id="productRows"></tbody></table></div>
+          </section>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="productModal" aria-hidden="true"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-header"><div><p class="eyebrow">Your catalog</p><h2 id="modalTitle">Add product</h2></div><button class="close-modal" data-close-product aria-label="Close">&times;</button></div><form id="productForm"><div class="form-grid"><label class="field full"><span>Product name</span><input name="name" required placeholder="Product name as shoppers will see it"></label><label class="field"><span>Category</span><select name="categoryId" required><option value="">Select category</option></select></label><label class="field"><span>Brand</span><select name="brandId" required><option value="">Select brand</option></select></label><label class="field"><span>Price (<span data-store="currencyCode">USD</span>)</span><input name="price" type="number" min="0" required placeholder="0"></label><label class="field"><span>Original price (<span data-store="currencyCode">USD</span>)</span><input name="originalPrice" type="number" min="0" placeholder="Optional"></label><label class="field"><span>Stock quantity</span><input name="stock" type="number" min="0" required placeholder="25"></label><label class="field"><span>Product badge</span><select name="badge"><option value="">No badge</option><option>Best Seller</option><option>Top Rated</option><option>New</option></select></label><label class="field full"><span>Specifications</span><input name="spec" placeholder="Short spec line, e.g. 500ml - glass"></label><label class="field full"><span>Product image 1</span><input name="image" type="file" accept="image/*"><img class="image-preview" id="productImagePreview" alt="Selected product preview"></label><label class="field full"><span>Product image 2 (optional)</span><input name="image2" type="file" accept="image/*"><img class="image-preview" id="productImagePreview2" alt="Selected product preview 2"></label><label class="field full"><span>Product image 3 (optional)</span><input name="image3" type="file" accept="image/*"><img class="image-preview" id="productImagePreview3" alt="Selected product preview 3"></label><label class="field full"><span>Description</span><textarea name="description" rows="4" placeholder="Describe the product for customers..."></textarea></label></div><div class="modal-footer"><button type="button" class="secondary-button" data-close-product>Cancel</button><button class="primary-button" type="submit">Save product</button></div></form></section></div>
+
+  <script src="../js/dashboard-shared.js"></script>
+  <script src="js/seller.js"></script>
+</body>
+</html>

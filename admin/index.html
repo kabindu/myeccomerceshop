@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="store-page-title" content="Admin">
+  <title>Admin</title>
+  <link rel="icon" href="/favicon.ico">
+  <script src="/store-config.js"></script>
+  <script src="/js/branding.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/dashboard/admin.css">
+  <link rel="stylesheet" href="../css/dashboard/theme-overrides.css">
+  <link rel="stylesheet" href="../css/dashboard/reference-overrides.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-lockup">
+        <img class="brand-mark" src="/images/logo.svg" alt="Store logo" data-store-logo>
+        <div><strong data-store="name">My Store</strong><span>Admin</span></div>
+      </div>
+      <nav class="main-nav" aria-label="Admin navigation">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">▦</span>Overview</button>
+        <button class="nav-item" data-view="products"><span class="nav-icon">◫</span>Products</button>
+        <button class="nav-item" data-view="categories"><span class="nav-icon">⌘</span>Categories</button>
+        <button class="nav-item" data-view="brands"><span class="nav-icon">✦</span>Brands</button>
+        <button class="nav-item" data-view="orders"><span class="nav-icon">▤</span>Orders</button>
+        <button class="nav-item" data-view="customers"><span class="nav-icon">☎</span>Customers</button>
+        <button class="nav-item" data-view="sellers"><span class="nav-icon">🏪</span>Sellers</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="store-status"><span></span><div><strong>Store is live</strong><small data-store="tagline">Online Store</small></div></div>
+        <button class="nav-item muted"><span class="nav-icon">⚙</span>Settings</button>
+        <a class="back-store" href="../index.html">← View storefront</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="admin-topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb"><span>Admin</span><b>/</b><strong id="pageCrumb">Overview</strong></div>
+        <label class="admin-search"><span>⌕</span><input type="search" placeholder="Search catalog"></label>
+        <div class="top-tabs"><button class="active">Overview</button><button>Products</button><button>Product view</button></div>
+        <div class="top-actions">
+          <button class="icon-button" title="Notifications" aria-label="Notifications">♢<i></i></button>
+          <div class="admin-user"><div class="avatar">AD</div><div><strong>Admin</strong><small data-store="name">My Store</small></div><span>⌄</span></div>
+        </div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="view active" id="overviewView">
+          <div class="page-heading"><div><p class="eyebrow">Store control center</p><h1>Welcome back.</h1><p class="subheading">Here is what is happening across your catalog.</p></div><button class="primary-button" data-open-product>＋ Add product</button></div>
+          <div class="metric-grid">
+            <article class="metric-card"><div class="metric-top"><span>Total products</span><span class="metric-icon orange">◫</span></div><strong id="metricProducts">&mdash;</strong><small>Listed across all sellers</small></article>
+            <article class="metric-card"><div class="metric-top"><span>Catalog value</span><span class="metric-icon teal" data-store="currencyCode">USD</span></div><strong id="metricValue">&mdash;</strong><small>Total price of everything listed</small></article>
+            <article class="metric-card"><div class="metric-top"><span>Low stock</span><span class="metric-icon red">!</span></div><strong id="metricLowStock">&mdash;</strong><small><b class="warning">Low or out of stock</b></small></article>
+            <article class="metric-card"><div class="metric-top"><span>Active orders</span><span class="metric-icon blue">↗</span></div><strong id="metricOrders">0</strong><small>Pending or paid, all time</small></article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="panel chart-panel"><div class="panel-heading"><div><h2>Sales overview</h2><p>Paid orders, last 30 days</p></div></div><div class="sales-summary" id="salesSummary"></div></section>
+            <section class="panel activity-panel"><div class="panel-heading"><div><h2>Recent activity</h2><p>Latest products added</p></div><button class="text-button">View all</button></div><div class="activity-list" id="activityList"></div></div></section>
+          </div>
+          <section class="panel quick-panel"><div class="panel-heading"><div><h2>Quick actions</h2><p>Common catalog tasks</p></div></div><div class="quick-actions"><button data-open-product><span>＋</span><strong>Add a product</strong><small>Create a new catalog listing</small></button><button data-view-target="categories"><span>⌘</span><strong>Manage categories</strong><small>Organize your equipment catalog</small></button><button data-view-target="brands"><span>✦</span><strong>Manage brands</strong><small>Keep brand records consistent</small></button><button data-view-target="orders"><span>▤</span><strong>Review orders</strong><small>See recent customer purchases</small></button></div></section>
+        </section>
+
+        <section class="view" id="productsView">
+          <div class="page-heading"><div><p class="eyebrow">Catalog management</p><h1 id="productsHeading">Products</h1><p class="subheading" id="productsSubheading">Manage everything that appears in your storefront.</p></div><button class="primary-button" data-open-product>＋ Add product</button></div>
+          <div class="seller-filter-banner" id="sellerFilterBanner" hidden><span>Showing products from <strong id="sellerFilterName"></strong></span><button class="text-button" id="clearSellerFilterBtn">Show all products</button></div>
+          <section class="panel product-panel"><div class="toolbar"><div class="search-box"><span>⌕</span><input id="productSearch" type="search" placeholder="Search products, brands, categories..."></div><div class="toolbar-actions"><select id="categoryFilter"><option value="all">All categories</option></select><select id="stockFilter"><option value="all">All stock</option><option value="in">In stock</option><option value="low">Low stock</option><option value="out">Out of stock</option></select><button class="filter-button">☷ Filters</button></div></div><div class="table-meta"><span><strong id="productCount">0</strong> products shown</span><button class="text-button">Export catalog ↓</button></div><div class="table-wrap"><table><thead><tr><th class="check"><input type="checkbox" aria-label="Select all products"></th><th>PRODUCT</th><th>CATEGORY</th><th>PRICE</th><th>STOCK</th><th>SOLD BY</th><th>STATUS</th><th></th></tr></thead><tbody id="productRows"></tbody></table></div><div class="table-footer"><span>Showing <b id="showingCount">0</b> of <b id="totalProductCount">0</b> products</span><div class="pagination"><button disabled>‹</button><button class="current">1</button><button>2</button><button>3</button><button>…</button><button>6</button><button>›</button></div></div></section>
+        </section>
+
+        <section class="view" id="categoriesView"><div class="page-heading"><div><p class="eyebrow">Catalog structure</p><h1>Categories</h1><p class="subheading">Keep product navigation aligned with the storefront.</p></div><button class="primary-button" data-open-entity="category">＋ Add category</button></div><div class="entity-grid" id="categoryCards"></div></section>
+        <section class="view" id="brandsView"><div class="page-heading"><div><p class="eyebrow">Catalog partners</p><h1>Brands</h1><p class="subheading">Manage the manufacturers displayed across product listings.</p></div><button class="primary-button" data-open-entity="brand">＋ Add brand</button></div><div class="entity-grid" id="brandCards"></div></section>
+        <section class="view" id="ordersView"><div class="page-heading"><div><p class="eyebrow">Commerce operations</p><h1>Orders</h1><p class="subheading">Every order placed on the storefront, newest first. Mark an order paid once you have received payment.</p></div></div><section class="panel product-panel"><div class="toolbar"><div class="search-box"><span>⌕</span><input id="orderSearch" type="search" placeholder="Search by customer, phone, order #..."></div><div class="toolbar-actions"><select id="orderStatusFilter"><option value="all">All statuses</option><option value="pending">Pending</option><option value="paid">Paid</option><option value="cancelled">Cancelled</option></select></div></div><div class="table-meta"><span><strong id="orderCount">0</strong> orders shown</span></div><div class="table-wrap"><table><thead><tr><th>ORDER</th><th>CUSTOMER</th><th>ITEMS</th><th>SHOP</th><th>TOTAL</th><th>STATUS</th><th>DATE</th><th></th></tr></thead><tbody id="orderRows"></tbody></table></div></section></section>
+        <section class="view" id="customersView"><div class="page-heading"><div><p class="eyebrow">Follow up directly</p><h1>Customers</h1><p class="subheading">Everyone with an account, their phone number, and what&rsquo;s currently sitting in their cart. Customers with items in cart are shown first &mdash; message them on WhatsApp before they forget.</p></div></div><section class="panel product-panel"><div class="table-meta"><span><strong id="customerCount">0</strong> customers</span></div><div class="table-wrap"><table><thead><tr><th>CUSTOMER</th><th>PHONE</th><th>CART</th><th>LAST CART ACTIVITY</th><th></th></tr></thead><tbody id="customerRows"></tbody></table></div></section></section>
+        <section class="view" id="sellersView"><div class="page-heading"><div><p class="eyebrow">Marketplace</p><h1>Sellers</h1><p class="subheading">Shops that applied to sell on your store. Verification confirms their email is real; approval is your call either way. Approve an application to let that seller sign in and post products &mdash; their listings appear on the storefront like any other product.</p></div></div><section class="panel product-panel"><div class="table-meta"><span><strong id="sellerCount">0</strong> sellers</span></div><div class="table-wrap"><table><thead><tr><th>SHOP</th><th>CONTACT</th><th>PHONE</th><th>PRODUCTS</th><th>VERIFIED</th><th>STATUS</th><th>APPLIED</th><th></th></tr></thead><tbody id="sellerRows"></tbody></table></div></section></section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="productModal" aria-hidden="true"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-header"><div><p class="eyebrow">Catalog record</p><h2 id="modalTitle">Add product</h2></div><button class="close-modal" data-close-product aria-label="Close">×</button></div><form id="productForm"><div class="form-grid"><label class="field full"><span>Product name</span><input name="name" required placeholder="Product name as shoppers will see it"></label><label class="field"><span>Category</span><select name="categoryId" required><option value="">Select category</option></select></label><label class="field"><span>Brand</span><select name="brandId" required><option value="">Select brand</option></select></label><label class="field"><span>Price (<span data-store="currencyCode">USD</span>)</span><input name="price" type="number" min="0" required placeholder="0"></label><label class="field"><span>Original price (<span data-store="currencyCode">USD</span>)</span><input name="originalPrice" type="number" min="0" placeholder="Optional"></label><label class="field"><span>Stock quantity</span><input name="stock" type="number" min="0" required placeholder="25"></label><label class="field"><span>Product badge</span><select name="badge"><option value="">No badge</option><option>Best Seller</option><option>Top Rated</option><option>New</option></select></label><label class="field full"><span>Specifications</span><input name="spec" placeholder="Short spec line, e.g. 500ml - glass"></label><label class="field full"><span>Product image 1</span><input name="image" type="file" accept="image/*"><img class="image-preview" id="productImagePreview" alt="Selected product preview"></label><label class="field full"><span>Product image 2 (optional)</span><input name="image2" type="file" accept="image/*"><img class="image-preview" id="productImagePreview2" alt="Selected product preview 2"></label><label class="field full"><span>Product image 3 (optional)</span><input name="image3" type="file" accept="image/*"><img class="image-preview" id="productImagePreview3" alt="Selected product preview 3"></label><label class="field full"><span>Description</span><textarea name="description" rows="4" placeholder="Describe the product for customers..."></textarea></label></div><div class="modal-footer"><button type="button" class="secondary-button" data-close-product>Cancel</button><button class="primary-button" type="submit">Save product</button></div></form></section></div>
+  <div class="modal-backdrop" id="entityModal" aria-hidden="true"><section class="product-modal entity-modal" role="dialog" aria-modal="true" aria-labelledby="entityModalTitle"><div class="modal-header"><div><p class="eyebrow">Catalog record</p><h2 id="entityModalTitle">Add category</h2></div><button class="close-modal" data-close-entity aria-label="Close">×</button></div><form id="entityForm"><div class="form-grid"><label class="field full"><span id="entityNameLabel">Category name</span><input name="name" required placeholder="Category name"></label><label class="field full" id="brandCategoryField"><span>Category</span><select name="category"><option value="">Select category</option></select></label></div><div class="modal-footer"><button type="button" class="secondary-button" data-close-entity>Cancel</button><button class="primary-button" type="submit">Save category</button></div></form></section></div>
+  <script src="../js/dashboard-shared.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

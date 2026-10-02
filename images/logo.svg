@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Placeholder logo. Replace this file with your own, or point
+     store.config.js `logo` at a different image. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Store logo">
+  <rect width="64" height="64" rx="14" fill="#0f1111"/>
+  <path d="M19 25h26l-2.2 20a3 3 0 0 1-3 2.7H24.2a3 3 0 0 1-3-2.7L19 25Z" fill="none" stroke="#f68b1e" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M26 27v-4.5a6 6 0 0 1 12 0V27" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/>
+</svg>

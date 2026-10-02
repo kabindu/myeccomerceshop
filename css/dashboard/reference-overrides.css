@@ -1,0 +1,125 @@
+/* Reference dashboard visual language */
+html,body{background:#f3f3f3}
+.sidebar{width:216px;background:#fff;color:#27323a;border-right:1px solid #e2e5e8;box-shadow:2px 0 8px rgba(20,35,51,.04)}
+.brand-lockup{padding:20px 18px 22px;color:#1d2933;border-bottom:1px solid #edf0f2}.brand-mark{background:#ff9900;color:#111}.brand-lockup strong{color:#1d2933}.brand-lockup span{color:#7d8992}
+.main-nav{padding:12px 10px}.nav-item{color:#68747d;border-radius:3px;padding:10px 11px;font-size:12px}.nav-item:hover{background:#f4f6f7;color:#1d2933}.nav-item.active{background:#fff4df;color:#9b6400;box-shadow:inset 3px 0 #ff9900}.nav-item.active .nav-icon{color:#ff9900}.nav-icon{color:#85919a;font-size:15px}.sidebar-bottom{padding:12px 10px 16px}.store-status{border-color:#edf0f2;padding:12px 9px}.store-status strong{color:#27323a}.store-status small{color:#87929a}.back-store{color:#68747d;padding:10px 11px}
+.main-content{margin-left:216px}.admin-topbar{height:64px;background:#fff;border-bottom:1px solid #e1e5e8;color:#27323a;padding:0 30px}.breadcrumb{color:#87929a}.breadcrumb strong{color:#27323a}.breadcrumb b{color:#c0c7cc}.admin-user strong{color:#27323a}.admin-user small{color:#87929a}.admin-user>span{color:#87929a}.icon-button{color:#52616b}.page-wrap{padding:28px 30px 46px;max-width:1440px}.page-heading{margin-bottom:22px}.page-heading h1{font-size:26px}.subheading{font-size:12px;color:#7a858d}
+.metric-grid{gap:12px;margin-bottom:14px}.metric-card{padding:15px 16px;border-radius:3px;background:#fff;border:1px solid #e1e5e8}.metric-card>strong{font-size:23px;margin:13px 0 5px}.metric-top{font-size:11px}.metric-icon{border-radius:3px}
+.dashboard-grid{gap:12px;margin-bottom:14px}.panel{border-radius:3px;border:1px solid #e1e5e8;padding:17px}.panel-heading h2{font-size:14px}.panel-heading p{font-size:10px;color:#89939a}.chart-panel{min-height:300px}.chart-area{height:205px;padding-top:16px}.chart-fill{background:linear-gradient(180deg,rgba(255,153,0,.3),rgba(255,153,0,.02));clip-path:polygon(0 64%,8% 43%,15% 58%,22% 35%,31% 48%,39% 25%,47% 41%,56% 20%,66% 35%,74% 17%,84% 28%,92% 11%,100% 24%,100% 100%,0 100%)}.chart-line{background:linear-gradient(153deg,transparent 0 7%,#ff9900 7.5% 8%,transparent 8.5% 16%,#ff9900 16.5% 17%,transparent 17.5% 26%,#ff9900 26.5% 27%,transparent 27.5% 35%,#ff9900 35.5% 36%,transparent 36.5% 45%,#ff9900 45.5% 46%,transparent 46.5% 55%,#ff9900 55.5% 56%,transparent 56.5% 65%,#ff9900 65.5% 66%,transparent 66.5% 75%,#ff9900 75.5% 76%,transparent 76.5% 85%,#ff9900 85.5% 86%,transparent 86.5% 95%,#ff9900 95.5% 96%,transparent 96.5%)}.chart-x,.chart-y{color:#929ba2}
+.activity{padding:10px 0}.activity strong{font-size:11px}.activity p{font-size:10px}.activity small{font-size:9px}.quick-panel{padding:17px}.quick-actions{gap:8px;margin-top:13px}.quick-actions button{padding:12px;border-radius:3px}.quick-actions span{border-radius:3px;width:27px;height:27px;margin-bottom:9px}
+.product-panel{border-radius:3px}.toolbar{padding:14px 16px}.search-box{border-radius:3px}.table-meta{padding:12px 16px}th,td{padding:10px 12px}th{font-size:9px}.product-thumb{width:36px;height:36px}.row-actions button{width:25px;height:25px}.table-footer{padding:12px 16px}
+.entity-card{border-radius:3px;box-shadow:none}.entity-symbol{border-radius:3px}.empty-orders{min-height:330px}.modal-backdrop{background:rgba(19,25,33,.55)}.product-modal{border-radius:4px}
+.admin-search{display:flex;align-items:center;border:1px solid #d5d9d9;border-radius:3px;width:min(260px,30vw);margin-left:auto;margin-right:14px}.admin-search span{color:#8d989f;padding-left:9px}.admin-search input{border:0;outline:0;width:100%;padding:8px;font-size:11px;color:#27323a}.top-tabs{display:flex;gap:4px;margin-right:20px}.top-tabs button{border:1px solid #d5d9d9;background:#fff;color:#68747d;border-radius:3px;padding:7px 11px;font-size:10px}.top-tabs button.active,.top-tabs button:hover{border-color:#ff9900;background:#fff4df;color:#9b6400}
+@media(max-width:760px){.sidebar{width:216px}.main-content{margin-left:0}.admin-topbar{padding:0 16px}.admin-search,.top-tabs{display:none}.page-wrap{padding:22px 16px 36px}}
+.entity-image{display:block;width:calc(100% + 36px);height:110px;object-fit:cover;margin:-18px -18px 16px}.image-preview{display:none;width:100%;height:120px;object-fit:cover;border-radius:4px;margin-top:4px}.image-preview.visible{display:block}
+
+/* ============================================================
+   MilikiPay-style pass: airy white admin, bold rounded-pill nav
+   and buttons, circular stat icons. Brand colour only — the
+   reference used purple, we use our own orange (#c8750f / #ff9900),
+   same family as the storefront accent and the existing active-nav
+   tint above. CSS only; no markup or JS changed, so every data-view
+   button, form id and click handler keeps working exactly as before.
+   ============================================================ */
+
+/* ---- Sidebar nav: bigger, breathing room, bold filled pill when active ---- */
+.main-nav{padding:14px 12px}
+.nav-item{font-size:14px;padding:11px 13px;border-radius:10px;gap:13px;margin:2px 0}
+.nav-item .nav-icon{font-size:17px;width:22px}
+.nav-item.active{background:#c8750f;color:#fff;font-weight:700;box-shadow:none}
+.nav-item.active .nav-icon{color:#ffe2b8}
+.nav-item.muted{color:#8992a0}
+
+/* "View storefront" was a small, easy-to-miss text link - make it a real,
+   unmissable button so it reads at the same visual weight as the primary
+   nav, not as fine print at the bottom of the sidebar. */
+.sidebar-bottom{padding:14px 12px 18px}
+.back-store{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:10px;padding:13px 14px;border-radius:10px;border:1.5px solid #c8750f;background:#fff6ea;color:#9a5a0c;font-size:14px;font-weight:700}
+.back-store:hover{background:#c8750f;color:#fff;border-color:#c8750f}
+
+/* ---- Top bar: fix real bugs first - breadcrumb, the "Product view" tab
+   and the store name were wrapping onto a second line and crowding
+   into each other anywhere between ~760px and ~1280px wide, because
+   nothing stopped text wrapping and nothing gave the row room to breathe. ---- */
+.admin-topbar{gap:14px}
+.breadcrumb{white-space:nowrap;flex-shrink:0}
+.top-tabs{flex-shrink:0}
+.top-tabs button{white-space:nowrap}
+.admin-user{flex-shrink:0}
+.admin-user strong,.admin-user small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
+
+/* Rounded pill search instead of a plain bordered box, and a real focus
+   ring (there wasn't one) - but it's the first thing to give up width
+   when the bar gets tight, and the lowest-priority item (the duplicate,
+   purely decorative Overview/Products/Product view tabs) drops off
+   before anything is forced to wrap. */
+.admin-search{border-radius:999px;background:#f3f4f6;border-color:transparent;width:min(260px,26vw);min-width:120px;flex:1 1 auto}
+.admin-search input{padding:10px 10px 10px 2px}
+.admin-search:focus-within{background:#fff;box-shadow:0 0 0 2px #c8750f}
+.icon-button{width:38px;height:38px;border-radius:50%;background:#f3f4f6;display:grid;place-items:center;flex-shrink:0}
+.admin-user{padding:5px 10px 5px 5px;border-radius:999px;background:#f3f4f6;transition:background .15s}
+.admin-user:hover{background:#ece9e4}
+.avatar{background:#fff0dc;color:#9a5a0c;flex-shrink:0}
+
+@media(max-width:1180px){
+  .top-tabs{display:none}
+}
+
+/* ---- Buttons: full pill shape, our orange as the solid CTA ---- */
+.primary-button{border-radius:999px;background:#ff9900;border-color:#e0890a;color:#1d1200;padding:11px 20px}
+.primary-button:hover{background:#e0890a}
+.secondary-button{border-radius:999px;padding:10px 18px}
+.filter-button{border-radius:999px;display:inline-flex}
+
+/* ---- Stat cards: rounded-2xl, circular tinted icon badge (not square) ---- */
+.metric-card{border-radius:16px;padding:20px 20px 18px}
+.metric-icon{border-radius:50%;width:34px;height:34px}
+.panel{border-radius:16px}
+.entity-card{border-radius:14px}
+
+/* ---- Table: softer corners, pill status/stock badges, round pagination ---- */
+.product-panel{border-radius:16px}
+.stock-pill,.status-pill,.cart-pill{border-radius:999px}
+.row-actions button,.row-actions a{border-radius:50%}
+.pagination button{border-radius:50%}
+.pagination button.current{background:#c8750f;border-color:#c8750f}
+
+@media(max-width:760px){
+  .back-store{font-size:13px;padding:12px}
+}
+
+/* ---- Sales overview: real figures from the orders table, replacing
+        the decorative chart that used to sit here with fixed axis
+        labels and a hardcoded trend line. ---- */
+.sales-summary{display:flex;flex-direction:column;gap:2px;padding-top:6px}
+.sales-row{display:flex;align-items:baseline;justify-content:space-between;padding:13px 0;border-bottom:1px solid #edf0f2}
+.sales-row:last-child{border-bottom:0}
+.sales-row span{font-size:12px;color:#7a858d}
+.sales-row strong{font-size:19px;color:#1d2933}
+.sales-summary .muted,.activity-list .muted{font-size:12px;color:#8d989f;padding:14px 0}
+
+/* ---- Orders: status is a control, not a label, because marking an
+        order paid or cancelled is a manual step without a gateway. ---- */
+.order-status-select{border:1px solid #d5d9d9;border-radius:999px;padding:5px 10px;font-size:11px;font-weight:600;text-transform:capitalize;background:#fff;color:#27323a;cursor:pointer}
+.order-status-select:focus-visible{outline:2px solid #c8750f;outline-offset:1px}
+.order-status-select:disabled{opacity:.6;cursor:progress}
+.order-status-select.in{background:#e7f4e9;border-color:#bfe0c4;color:#007600}
+.order-status-select.low{background:#fff4df;border-color:#f0d9ab;color:#b12704}
+.order-status-select.out{background:#fcede9;border-color:#f3cfc8;color:#b12704}
+
+/* ---- Email verification: a banner for the seller who still has to
+        verify, and a pill in the admin sellers table. ---- */
+.verify-banner{display:flex;flex-wrap:wrap;align-items:center;gap:12px;background:#fff4df;border:1px solid #f0d9ab;border-radius:10px;padding:13px 15px;margin-bottom:18px}
+.verify-banner p{margin:0;font-size:12.5px;color:#7a5200;line-height:1.5;flex:1 1 260px}
+.verify-banner strong{display:block;font-size:13px;color:#5c3d00;margin-bottom:2px}
+.verify-banner .verify-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.verify-banner input{width:120px;font-family:inherit;font-size:14px;letter-spacing:.2em;text-align:center;padding:8px;border:1px solid #e0cba0;border-radius:6px;background:#fff}
+.verify-banner button{padding:8px 13px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid #c8750f;background:#c8750f;color:#fff}
+.verify-banner button.ghost{background:#fff;color:#8a5a12}
+.verify-banner button:disabled{opacity:.6}
+.verify-banner .verify-status{flex:1 1 100%;font-size:12px;color:#7a5200;margin:0}
+.verify-banner[hidden]{display:none}
+.verify-pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:4px 9px;font-size:10px;font-weight:600}
+.verify-pill.yes{background:#e7f4e9;color:#007600}
+.verify-pill.no{background:#f4f5f6;color:#6b7680}
+.verify-pill small{font-size:9px;opacity:.75;font-weight:500}

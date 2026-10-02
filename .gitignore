@@ -1,0 +1,8 @@
+node_modules/
+.env*
+!.env.example
+uploads/
+server.log
+server.err.log
+.vercel
+.env*.local
